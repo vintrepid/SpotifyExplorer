@@ -25,3 +25,17 @@ html, body {
         // Ember.js inserts empty <script> tags for data binding
     }
 }
+
+// override chrome user-style that was padding 40px and causing text to overlap adjacent table cell
+ul.artists {
+    padding-left: 0px;
+}
+
+// http://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell
+td
+{
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,5 +1,5 @@
 <div>
-    <div class="col-md-3">
+    <div>
         <div class="well sidebar-nav">
             {{input type="text" class="new-search" placeholder="Enter query..." value=newSearch insert-newline="newSearch" }}
             <button class="btn btn-primary btn-sm search-button" {{action "newSearch"}} {{bind-attr disabled=disabled}}>Search</button>
@@ -14,7 +14,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-9">
+    <div>
         {{outlet}}
     </div>
 </div>

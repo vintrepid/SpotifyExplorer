@@ -15,7 +15,7 @@ SpotifyExplorer.Helpers.spotifyURL = function(uri) {
 Ember.Handlebars.helper('spotify-link', function(uri, title) {
     var url = SpotifyExplorer.Helpers.spotifyURL(uri);
 
-    return new Handlebars.SafeString('<a href="' + url + '">' + title + '</a>');
+    return new Handlebars.SafeString('<a href="' + url + '" target="_blank" data-toggle="tooltip" title="' + title + '">' + title + '</a>');
 });
 
 // from http://stackoverflow.com/a/6313008
