@@ -1,4 +1,4 @@
-// Generated on 2014-02-26 using generator-ember 0.8.3
+// Generated on 2014-10-05 using generator-ember 0.8.5
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
@@ -134,7 +134,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/js',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/libs',
+                importPath: '<%= yeoman.app %>/libs',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/styles/fonts',
@@ -269,26 +269,26 @@ module.exports = function (grunt) {
                         cwd: '<%= yeoman.app %>/libs/',
                         dest: '<%= yeoman.app %>/styles/fonts/',
                         src: [
-                            'bootstrap-sass/dist/fonts/**', // Bootstrap
-                            'font-awesome/fonts/**' // Font-Awesome
+                            'bootstrap-sass-official/vendor/assets/fonts/bootstrap/**'
                         ]
                     }
                 ]
-            },
+            }, 
             dist: {
-                files: [{
-                    expand: true,
-                    dest: '<%= yeoman.dist %>',
-                    cwd: 'heroku',
-                    src: '*',
-                    rename: function (dest, src) {
-                        var path = require('path');
-                        if (src === 'distpackage.json') {
-                            return path.join(dest, 'package.json');
-                        }
-                        return path.join(dest, src);
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,txt}',
+                            '.htaccess',
+                            'images/{,*/}*.{webp,gif}',
+                            'styles/fonts/*'
+                        ]
                     }
-                }]
+                ]
             }
         },
         concurrent: {
@@ -317,7 +317,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '.tmp/js/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+                    '.tmp/js/compiled-templates.js': '<%= yeoman.app %>/templates/**/*.hbs'
                 }
             }
         },
